@@ -55,4 +55,61 @@ export class CurrencyConverterService implements OnModuleInit {
       throw new Error(`Error: ${error.message}`);
     }
   }
+
+  async calculatorCurr(num1: number, firstCurr: string, num2: number, secondCurr: string, finalCurr: string, operation:string): Promise<any> {
+    try
+    {
+      if (!fx.rates || Object.keys(fx.rates).length === 0) 
+        {
+          await this.loadExchangeRates();
+        }
+      
+      fx.base = 'EUR';
+      const baseRate = fx.rates[fx.base]
+      const firstRate = fx.rates[firstCurr];
+      const secondRate = fx.rates[secondCurr];
+      const finalRate = fx.rates[finalCurr];
+
+      if (!firstRate || !secondRate || !finalRate) 
+        {
+          throw new Error(`Отсутствует обменный курс для ${firstRate} или ${secondRate} или ${finalRate}`);
+        }
+
+      
+      const firstResult = (num1 / firstRate) * baseRate;
+      const secondResult = (num2/ secondRate) * baseRate;
+      //const result = ((firstResult + secondResult) / baseRate) * finalRate;
+      let preResult: number;
+      switch(operation)
+      {
+        case '+':
+          preResult = firstResult + secondResult;
+          break;
+        case '-':
+          preResult = firstResult - secondResult;
+          break;
+        case '*':
+          preResult = firstResult * secondResult;
+          break;
+        case '/':
+          if (secondResult === 0) 
+          {
+            throw new Error('Division by zero is not allowed.');
+          }
+          preResult = firstResult / secondResult;
+          break;
+        default:
+          throw new Error('Invalid operator.');
+      }
+
+      const result = (preResult / baseRate) * finalRate;
+      return result;
+
+    }
+    catch (error)
+    {
+      console.error('Error:', error.message);
+      throw new Error(`Error: ${error.message}`);
+    }
+  }
 }

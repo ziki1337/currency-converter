@@ -3,7 +3,8 @@ document.getElementById('convertButton').addEventListener('click', async () => {
     const fromCurrency = document.getElementById('fromCurrency').value;
     const toCurrency = document.getElementById('toCurrency').value;
 
-    if (!amount || isNaN(amount) || amount <= 0) {
+    if (!amount || isNaN(amount) || amount <= 0) 
+    {
         alert('Please enter a valid amount');
         return;
     }
@@ -14,7 +15,8 @@ document.getElementById('convertButton').addEventListener('click', async () => {
         postCurr: toCurrency
     };
 
-    try {
+    try 
+    {
         const response = await fetch('http://localhost:2727/currency-converter/convert', {
             method: 'POST',
             headers: {
@@ -23,7 +25,8 @@ document.getElementById('convertButton').addEventListener('click', async () => {
             body: JSON.stringify(requestBody)
         });
 
-        if (!response.ok) {
+        if (!response.ok) 
+        {
             throw new Error('Network response was not ok');
         }
 
@@ -32,7 +35,9 @@ document.getElementById('convertButton').addEventListener('click', async () => {
 
         document.getElementById('result').innerText = 
             `${amount} ${fromCurrency} = ${convertedAmount.toFixed(2)} ${toCurrency}`;
-    } catch (error) {
+    } 
+    catch (error) 
+    {
         console.error('Error:', error);
         document.getElementById('result').innerText = 'Error converting currency';
     }

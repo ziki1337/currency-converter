@@ -12,3 +12,25 @@ export class ConvertCurrencyDto {
   @IsString()
   postCurr: string;
 }
+
+export class ConvertCalcDTO {
+  @IsNumber()
+  @Type(() => Number)
+  num1: number;
+
+  @IsString()
+  firstCurr: string;
+
+  @IsNumber()
+  @Type(() => Number)
+  num2: number;
+
+  @IsString()
+  secondCurr: string;
+
+  @IsString()
+  finalCurr: string;
+
+  @IsString()
+  operation: string;
+}

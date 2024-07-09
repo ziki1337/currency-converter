@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CurrencyConverterService } from './currency-converter.service';
-import { ConvertCurrencyDto } from './dto/index';
+import { ConvertCalcDTO, ConvertCurrencyDto } from './dto/index';
 
 @Controller('currency-converter')
 export class CurrencyConverterController {
@@ -14,6 +14,15 @@ export class CurrencyConverterController {
       const convertedAmount = await this.currencyConverterService.findAllValues(num, preCurr, postCurr);
   
       return { fromCurrency: preCurr, toCurrency: postCurr, amount: num, convertedAmount };
+    }
+
+    @Post('calculator')
+    @UsePipes(new ValidationPipe({ transform: true }))
+    async convertCalcul(@Body() convertCalcDTO: ConvertCalcDTO) {
+      const { num1, firstCurr, num2, secondCurr, finalCurr, operation } = convertCalcDTO;
+
+      const convertedAmount = await this.currencyConverterService.calculatorCurr(num1, firstCurr, num2, secondCurr, finalCurr, operation);
+      return {convertedAmount};
     }
   
     @Get()
