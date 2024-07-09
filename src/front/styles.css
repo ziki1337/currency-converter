@@ -126,3 +126,65 @@ button:hover {
     background-color: #6200ea;
     color: #e0e0e0;
 }
+
+.calculator-block {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px; /* Ширина блока, можно изменить по вашему усмотрению */
+}
+
+.calculator-block label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.calculator-block select,
+.calculator-block input[type="number"],
+.calculator-block button {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #34495e;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
+.calculator-block select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: 50%;
+    padding-right: 24px; /* Добавляем место для стрелочки в селекторе */
+}
+
+.calculator-block button {
+    background-color: #2980b9;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calculator-block button:hover {
+    background-color: #3498db;
+}
+
+#results-container {
+    margin-top: 20px;
+}
+
+#results-container div {
+    background-color: #34495e;
+    color: #ecf0f1;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
