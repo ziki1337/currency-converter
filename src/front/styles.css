@@ -38,7 +38,7 @@ h1 {
 #currency-selectors {
     display: flex;
     justify-content: space-between;
-    width: 460px; /* Общее пространство для двух селекторов */
+    width: 460px; 
 }
 
 #currency-selectors .container {
@@ -134,7 +134,7 @@ button:hover {
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Ширина блока, можно изменить по вашему усмотрению */
+    width: 400px; 
 }
 
 .calculator-block label {
@@ -164,7 +164,7 @@ button:hover {
     background-repeat: no-repeat;
     background-position-x: 100%;
     background-position-y: 50%;
-    padding-right: 24px; /* Добавляем место для стрелочки в селекторе */
+    padding-right: 24px; 
 }
 
 .calculator-block button {
